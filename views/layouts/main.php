@@ -1,11 +1,27 @@
+<?php   //Подключаем файл AppAsset.php и его зависимости
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset;
+
+AppAsset::register($this);
+?>
+<?php $this->beginPage() ?>     <!--Начало страницы-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Yii::$app->language ?>">    <!-- Установка языка -->
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>      <!-- Метка  -->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -18,6 +34,7 @@
 </head><!--/head-->
 
 <body>
+<?php $this->beginBody() ?>
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
@@ -1049,6 +1066,7 @@
     </div>
 
 </footer><!--/Footer-->
-
+<?php $this->endBody() ?>       <!-- Конец тела страницы -->
 </body>
 </html>
+<?php $this->endPage() ?>       <!-- Конец страницы -->
