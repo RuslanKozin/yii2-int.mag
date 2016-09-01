@@ -1,4 +1,4 @@
-<?php
+<?php   //Модель для таблицы product
 
 namespace app\models;
 use yii\db\ActiveRecord;
