@@ -1,0 +1,8 @@
+	Что сделал
+- Установил Yii2
+- Настроил url
+- Вставил и настроил шаблон
+- Создал базу yii2-int.mag и две таблицы category и product
+- Создал модель Category.php для работы с таблицей category базы yii2-int.mag
+- Создал модель Product.php для работы с таблицей product 
+- Создал виджет MenuWidget.php
