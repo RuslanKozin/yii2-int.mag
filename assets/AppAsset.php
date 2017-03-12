@@ -36,7 +36,7 @@ class AppAsset extends AssetBundle
         'js/jquery.accordion.js',
         'js/main.js',
     ];
-    public $depends = [                 //Зависимости скриптов и стилей
+    public $depends = [                 //Зависимости скриптов и стилей новые
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset', /*Эта зависимость заменяет подключ. файлы выше
                                                 (css/bootstrap.min.css, js/jquery.js, js/bootstrap.min.js)*/
