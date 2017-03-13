@@ -29,7 +29,6 @@ class AppAsset extends AssetBundle
     public $js = [
      //   'js/jquery.js',
      //   'js/bootstrap.min.js',
-        'js/jquery.js',
         'js/price-range.js',
         'js/jquery.prettyPhoto.js',
         'js/jquery.cookie.js',
