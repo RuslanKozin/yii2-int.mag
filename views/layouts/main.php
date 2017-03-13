@@ -158,7 +158,7 @@ ltAppAsset::register($this);
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<?= $content; ?>
+<?= $content;         //Подключается слайдер и контент из файла site/index  ?>
 
 <footer id="footer"><!--Footer-->
     <div class="footer-top">
