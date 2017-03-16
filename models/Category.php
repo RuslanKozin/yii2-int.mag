@@ -13,7 +13,7 @@ class Category extends ActiveRecord
 
     public function getProducts()       //Привязываем таблицу product
     {
-        return $this->hasMany(Product::className(), ['category_id' => 'id']);   //hasMany -
+        return $this->hasMany(Product::className(), ['category_id' => 'id']);   //hasMany - отношение один ко многим
             /*category_id - поле в связываемой таблице product (ссылается на поле id таблицы category) */
     }
 }
