@@ -3,6 +3,7 @@
 namespace app\components;   //Подключаем пространство имен для виджета
 use app\models\Category;
 use yii\base\Widget;
+use Yii;
 
 
 
@@ -27,10 +28,18 @@ class MenuWidget extends Widget
 
     public function run()       //Метод run чаще всего используется для вывода данных
     {
+        // get cache (получаем нужные нам данные из кэша)
+        $menu = Yii::$app->cache->get('menu');
+        if($menu) return $menu;
+
         $this->data = Category::find()->indexBy('id')->asArray()->all();   /*Метод asArray - вернет результат ввиде массива-массива
             Метод indexBy - позволяет указать какое поле/колонку таблицы использовать для индексирования массивов(ключи совпадают с id)*/
         $this->tree = $this->getTree();  //Строем дерево
         $this->menuHtml = $this->getMenuHtml($this->tree);      //Строем html-код
+
+        // set cache (записываем в кэш)
+        Yii::$app->cache->set('menu', $this->menuHtml, 60);     //menu - ключ, под которым мы создадим файл кэша|    $this->menuHtml - данные, которые мы хотим туда записать |  60 - время на которое будет создаваться файл кэша
+
         return $this->menuHtml;  //Выводим, что попало в tpl
     }
 
