@@ -57,7 +57,7 @@ class MenuWidget extends Widget
         return $str;    /* В итоге пройдясь в цикле по всему дереву формируем нужный html-код, который возвращает метод getMenuHtml  */
     }
 
-    protected function catToTemplate()      //Метод catToTemplate возвращает буферизированный вывод в $str
+    protected function catToTemplate($category)      //Метод catToTemplate возвращает буферизированный вывод в $str
     {
         ob_start();         //Фукнция ob_start буферизирует вывод, а затем его возвращает не выводя при этом на экран и возвращает в $str
         include __DIR__ . '/menu_tpl/' . $this->tpl;
