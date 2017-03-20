@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = 'My Yii Application';
+
 ?>
 <section id="advertisement">
     <div class="container">
