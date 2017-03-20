@@ -19,7 +19,7 @@ class CategoryController extends AppController {
         $products = Product::find()->where(['category_id' => $id])->all();    //Получаем продукты по данному id
         $category = Category::findOne($id);         //Получаем id одной категории
         $this->setMeta('E-SHOPPER | ' . $category->name, $category->keywords, $category->description);
-        return $this->render('view', compact('products'));
+        return $this->render('view', compact('products', 'category'));
     }
 
 }
