@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\helpers\Url;
 
 ?>
 <section id="advertisement">
@@ -63,16 +64,16 @@ use yii\widgets\LinkPager;
             <div class="productinfo text-center">
                 <?= Html::img("@web/images/products/{$product->img}", ['alt' => $hit->name])?>
                 <h2>$<?= $product->price?></h2>
-                <p><?= $product->name?></p>
+                <p><a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>"><?= $product->name?></a></p>
                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
             </div>
-            <div class="product-overlay">
+            <!--<div class="product-overlay">
                 <div class="overlay-content">
                     <h2>$<?= $product->price?></h2>
                     <p><?= $product->name?></p>
                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
-            </div>
+            </div>-->
             <?php if($product->new): ?>
                 <?= Html::img("@web/images/home/new.png", ['alt' => 'Новинка', 'class' => 'new'])?>
             <?php endif?>
