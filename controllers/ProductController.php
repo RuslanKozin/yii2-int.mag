@@ -13,6 +13,9 @@ class ProductController extends AppController {
 
             //Вариант с ленивой загрузкой
         $product = Product::findOne($id);   //findOne - т.е. нужен один объект по id
+        if(empty($product)) {
+            throw new \yii\web\HttpException(404, 'Такого товара нет');
+        }
 
             //Вариант с жадной загрузкой
         /*$product = Product::find()->with('category')

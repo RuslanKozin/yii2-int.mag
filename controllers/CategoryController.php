@@ -17,6 +17,12 @@ class CategoryController extends AppController {
 
     public function actionView($id) {
         $id = Yii::$app->request->get('id');        //Получаем id категории
+
+        $category = Category::findOne($id);         //Получаем id одной категории
+        if(empty($category)) {
+            throw new \yii\web\HttpException(404, 'Такой категории нет');
+        }
+
         //$products = Product::find()->where(['category_id' => $id])->all();    //Получаем продукты по данному id
             //Пагинация
         $query = Product::find()->where(['category_id' => $id]);
