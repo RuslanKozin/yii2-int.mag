@@ -48,6 +48,7 @@ $config = [
                 'category/<id:\d+>/page/<page:\d+>' => 'category/view',     //Правило для чпу пагинации (КОНКРЕТНОЕ ПРАВИЛО |  конкретные правила должны находится выше общих правил)
                 'category/<id:\d+>' => 'category/view',     //Правило для чпу категорий (ОБЩЕЕ ПРАВИЛО)
                 'product/<id:\d+>' => 'product/view',
+                'search' => 'category/search',
             ],
         ],
     ],
