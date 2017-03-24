@@ -15,8 +15,8 @@ class CategoryController extends AppController {
         return $this->render('index', compact('hits'));
     }
 
-    public function actionView($id) {
-        $id = Yii::$app->request->get('id');        //Получаем id категории
+    public function actionView($id) {           //Получаем id параметром (из route | config/web.php) 1-й вариант
+        //$id = Yii::$app->request->get('id');    //Получаем id категории (из массива get - адресной строки) 2-й вариант
 
         $category = Category::findOne($id);         //Получаем id одной категории
         if(empty($category)) {
