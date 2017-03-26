@@ -6,6 +6,26 @@
 		speed: 300,
 	});
 
+		//------------------------ Добавление товара в корзину
+	$('.add-to-cart').on('click', function(e) {
+		e.preventDefault();			//Отменяет переход по ссылке при добавлении товара в корзину
+		var id = $(this).data('id');
+		$.ajax({
+			url: 'cart/add',
+			data: {id: id},
+			type: 'GET',
+			success: function(res) {		//В параметре success мы будем принимать ответ
+				if(!res) alert('Ошибка!');
+				console.log(res);			//Выводим в консоль ответ
+				//showCart(res);
+			},
+			error: function() {
+				alert('Error!');
+			}
+		});
+	});
+		//------------------------ Добавление товара в корзину
+
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
 	};	
