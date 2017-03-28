@@ -319,6 +319,20 @@ ltAppAsset::register($this);
     </div>
 
 </footer><!--/Footer-->
+
+<?php 
+    \yii\bootstrap\Modal::begin([
+        'header' => '<h2>Корзина</h2>',
+        'id' => 'cart',
+        'size' => 'modal-lg',
+        'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+            <button type="button" class="btn btn-success">Оформить заказ</button>
+            <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>'
+    ]);
+
+    \yii\bootstrap\Modal::end();
+?>
+
 <?php $this->endBody() ?>       <!-- Конец тела страницы -->
 </body>
 </html>
