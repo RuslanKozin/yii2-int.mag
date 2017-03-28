@@ -10,6 +10,24 @@
 		$('#cart .modal-body').html(cart);		//Обращаемся к нашему модальному окну и методом html вставляем ответ (cart)
 		$('#cart').modal();
 	}
+				//Делигирование событий (делигируем .del-item, который генерируется динамически)
+	$('#cart .modal-body').on('click', '.del-item', function() {	//Обращаемся к родительскому элементу, который есть уже на странице и для него мы делегируем событие для элементов, которые появятся динамически в данном текущем элементе 
+		var id = $(this).data('id');
+		//console.log(id);
+		$.ajax({
+			url: '/cart/del-item',
+			data: {id: id},
+			type: 'GET',
+			success: function(res) {		//В параметре success мы будем принимать ответ
+				if(!res) alert('Ошибка!');
+				//console.log(res);			//Выводим в консоль ответ
+				showCart(res);		//Функция showCart, которой мы передаем наш ответ (т.е. готовый вид для вставки в модальное окно)
+			},
+			error: function() {
+				alert('Error!');
+			}
+		});
+	});
 
 	function clearCart() {
 		$.ajax({
