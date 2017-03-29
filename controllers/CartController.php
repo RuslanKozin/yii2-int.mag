@@ -41,6 +41,9 @@ class CartController extends AppController {
         $session->open();
         $cart = new Cart();
         $cart->addToCart($product, $qty);
+        if( !Yii::$app->request->isAjax ) {     //Если мы получаем данные не методом ajax
+            return $this->redirect(Yii::$app->request->referrer);   //то делаем редирект на ту страницу с которой пришел пользователь (в Yii::$app->request->referrer хранится url(адрес) с которого пришел наш пользователь)
+        }
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
     }
