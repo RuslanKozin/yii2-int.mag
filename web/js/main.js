@@ -65,10 +65,11 @@
 		//------------------------ Добавление товара в корзину
 	$('.add-to-cart').on('click', function(e) {
 		e.preventDefault();			//Отменяет переход по ссылке при добавлении товара в корзину
-		var id = $(this).data('id');
+		var id = $(this).data('id'),
+			qty = $('#qty').val();
 		$.ajax({
 			url: '/cart/add',
-			data: {id: id},
+			data: {id: id, qty: qty},
 			type: 'GET',
 			success: function(res) {		//В параметре success мы будем принимать ответ
 				if(!res) alert('Ошибка!');

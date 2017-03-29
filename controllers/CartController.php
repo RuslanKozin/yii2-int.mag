@@ -33,12 +33,14 @@ class CartController extends AppController {
 
     public function actionAdd() {       //Добавляем товар в корзину
         $id = Yii::$app->request->get('id');
+        $qty = (int)Yii::$app->request->get('qty');
+        $qty = !$qty ? 1 : $qty;        //Если в $qty 0, (?)тогда мы присвоим значение 1 по умолчанию (:) противном случае положим то, что ввел пользователь туда
         $product = Product::findOne($id);
         if(empty($product)) return false;       //Если $product пустая, то мы останавливаем программу
         $session = Yii::$app->session;
         $session->open();
         $cart = new Cart();
-        $cart->addToCart($product);
+        $cart->addToCart($product, $qty);
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
     }
