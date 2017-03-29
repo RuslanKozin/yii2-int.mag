@@ -63,4 +63,11 @@ class CartController extends AppController {
         return $this->render('cart-modal', compact('session'));
     }
 
+    public function actionShow() {
+        $session =Yii::$app->session;           //Открываем сессию
+        $session->open();
+        $this->layout = false;
+        return $this->render('cart-modal', compact('session'));
+    }
+
 }

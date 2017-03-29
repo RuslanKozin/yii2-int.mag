@@ -21,7 +21,7 @@ class Cart extends ActiveRecord {
         $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $qty * $product->price : $qty * $product->price;     //Если массив session cart.sum существует, тогда мы должны его взять, прибавить к нему кол-во, которое кладется в корзину умноженное на цену. Иначе мы должны взять количество этого товара умноженное на цену и получим итоговую сумму.
     }
 
-    public function recalc($id) {
+    public function recalc($id) {       //Метод пересчета товаров и суммы при удалении товара с корзины
         if(!isset($_SESSION['cart'][$id])) return false;
         $qtyMinus = $_SESSION['cart'][$id]['qty'];
         $sumMinus = $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price'];
