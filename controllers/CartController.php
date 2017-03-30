@@ -88,6 +88,14 @@ class CartController extends AppController {
             if($order->save()) {        //Если заказ сохранен
                 $this->saveOrderItems($session['cart'], $order->id);    //$session['cart'] - пережаем корзину | $order->id - id заказа
                 Yii::$app->session->setFlash('success', 'Ваш заказ принят');    //Устанавливаем сообщение
+                    /*   Отправка почты   */
+                Yii::$app->mailer->compose('order', ['session' => $session])
+                    ->setFrom(['username@mail.ru' => 'yii2-int.mag'])       //С какой почты отправлять
+                    ->setTo($order->email)          //Куда отправляем (т.е. email указанный пользователем)
+                    ->setSubject('Заказ')           //Тема письма 
+                    ->send();                       //Отправка
+                    /*   Отправка почты   */
+
                     /*   Очищаем корзину   */
                 $session->remove('cart');
                 $session->remove('cart.qty');
