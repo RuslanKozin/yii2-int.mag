@@ -88,6 +88,11 @@ class CartController extends AppController {
             if($order->save()) {        //Если заказ сохранен
                 $this->saveOrderItems($session['cart'], $order->id);    //$session['cart'] - пережаем корзину | $order->id - id заказа
                 Yii::$app->session->setFlash('success', 'Ваш заказ принят');    //Устанавливаем сообщение
+                    /*   Очищаем корзину   */
+                $session->remove('cart');
+                $session->remove('cart.qty');
+                $session->remove('cart.sum');
+                    /*   Очищаем корзину   */
                 return $this->refresh();        //Перезагружаем данную страницу
             }else{
                 Yii::$app->session->setFlash('error', 'Ошибка оформления заказа');    //Устанавливаем сообщение
