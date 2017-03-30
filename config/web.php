@@ -26,6 +26,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,  //Запомнить пользователя с помощью cookie (если пользователь нажал кнопку "запомнить меня")
+            //'loginUrl' => 'cart/view',     //Куда перенаправить пользователя если он не авторизирован
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

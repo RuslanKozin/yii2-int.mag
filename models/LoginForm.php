@@ -34,6 +34,14 @@ class LoginForm extends Model
             ['password', 'validatePassword'],
         ];
     }
+    
+    public function attributeLabels() {      //Данный метод позволяет задать поля для формы
+        return [
+            'username' => 'Логин',
+            'password' => 'Пароль',
+            'rememberMe' => 'Запомнить',
+        ];
+    }
 
     /**
      * Validates the password.
@@ -60,6 +68,11 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+            if($this->rememberMe){          //Если пользователь нажал кнопку "Запомнить меня"
+                $u = $this->getUser();
+                $u->generateAuthKey();      //Генерирует хэш для cookie
+                $u->save();
+            }
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;
