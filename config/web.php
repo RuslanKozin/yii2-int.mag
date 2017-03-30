@@ -8,6 +8,12 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru-RU',      //Установка языка
     'defaultRoute' => 'category/index',
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout' => 'admin',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -19,7 +25,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => true,  //Запомнить пользователя с помощью cookie (если пользователь нажал кнопку "запомнить меня")
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
