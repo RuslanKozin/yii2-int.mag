@@ -3,7 +3,6 @@
 namespace app\modules\admin\controllers;
 
 use yii\web\Controller;
-use yii\filters\AccessControl;      //С помощью данного фильтра мы можем управлять авторизацией
 
 
 class AppAdminController extends Controller{
