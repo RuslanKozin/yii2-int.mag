@@ -29,8 +29,10 @@ class Module extends \yii\base\Module
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    'allow' => true,
-                    'roles' => ['@']
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
                 ]
             ]
         ];
