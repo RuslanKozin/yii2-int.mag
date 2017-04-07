@@ -92,6 +92,9 @@ class ProductController extends Controller
             if($model->image) {
                 $model->upload();
             }
+            unset($model->image);
+            $model->gallery = UploadedFile::getInstances($model, 'gallery');
+            $model->uploadGallery();
 
             Yii::$app->session->setFlash('success', "Товар {$model->name} обновлен");
             return $this->redirect(['view', 'id' => $model->id]);
