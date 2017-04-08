@@ -6,7 +6,17 @@ use yii\db\ActiveRecord;
 
 class Cart extends ActiveRecord {
 
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
+
     public function addToCart($product, $qty = 1) {
+        $mainImg = $product->getImage();
         if(isset($_SESSION['cart'][$product->id])){     //Если в массиве session cart есть текущий элемент (товар) и свойство id
             $_SESSION['cart'][$product->id]['qty'] += $qty;     //то обратимся к текущему элементу (товару) к его свойству qty и добавим то кол-во, которое пришло к нам в $qty
         }else{
@@ -14,7 +24,7 @@ class Cart extends ActiveRecord {
                 'qty' => $qty,
                 'name' => $product->name,
                 'price' => $product->price,
-                'img' => $product->img
+                'img' => $mainImg->getUrl('x50')
             ];
         }
         $_SESSION['cart.qty'] = isset($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;     //Если массив session cart.qty существует, тогда мы его возмем и прибавим к нему то кол-во, которое пришло к нам параметром, а если не существуеют, тогда мы сюда положим это количество
